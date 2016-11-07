@@ -1,0 +1,116 @@
+@import _variables
+
+vendor($prop, $args)
+  -webkit-{$prop} $args
+  -moz-{$prop} $args
+  -ms-{$prop} $args
+  -o-{$prop} $args
+  {$prop} $args
+
+helv()
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif
+
+openSansRegular()
+  font-family: 'Open Sans', sans-serif
+  font-weight: 400
+
+openSansSemibold()
+  font-family: 'Open Sans', sans-serif
+  font-weight: 600
+
+openSansBold()
+  font-family: 'Open Sans', sans-serif
+  font-weight: 700
+
+openSansExtraBold()
+  font-family: 'Open Sans', sans-serif
+  font-weight: 800
+
+borderRadius($size)
+  border-radius: $size
+
+borderBottomRadius($size)
+  border-radius: 0 0 $size $size
+
+borderTopRadius($size)
+  border-radius: $size $size 0 0
+
+borderRadiusLarge()
+  borderRadius($borderRadiusLarge)
+
+borderBottomRadiusLarge()
+  borderBottomRadius($borderRadiusLarge)
+
+borderTopRadiusLarge()
+  borderTopRadius($borderRadiusLarge)
+
+borderRadiusSmall()
+  borderRadius($borderRadiusSmall)
+
+borderBottomRadiusSmall()
+  borderBottomRadius($borderRadiusSmall)
+
+borderTopRadiusSmall()
+  borderTopRadius($borderRadiusSmall)
+
+circle()
+  borderRadius(50%)
+
+divider()
+  margin: 0
+  border: 0
+  border-top: 1px solid $dividerColor
+  transform(scaleY(0.5)) // hairline
+
+flipVertically()
+  transform(scaleY(-1))
+  filter: FlipV
+  -ms-filter: "FlipV"
+
+scaleEl($dx, $dy = $dx)
+  vendor('transform', scale($dx, $dy))
+
+shadow($y, $blur)
+  box-shadow: 0 $y $blur 0 rgba(0,0,0,0.20)
+
+shadowLarge()
+  shadow(1px, 4px)
+
+shadowSmall()
+  shadow(1px, 2px)
+
+textEllipsis()
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+textShadow($y, $blur)
+  text-shadow: 0px $y $blur rgba(0,0,0,0.20)
+
+textShadowSmall()
+  textShadow(1px, 2px)
+
+turn($deg)
+  vendor('transform', rotate($deg))
+
+transform($param)
+  vendor('transform', $param)
+
+transformOrigin($x, $y)
+  vendor('transform-origin', $x $y)
+
+transition()
+  vendor('transition', arguments)
+
+animation($name, $timingFn, $fillMode, $duration, $delay = 0s, $iterCount = 1)
+  vendor('animation', $name $timingFn $duration $delay $iterCount $fillMode)
+
+// calc()
+//   if current-property
+//     add-property(current-property[0], s('-webkit-calc(%s)', unquote(arguments)))
+//     add-property(current-property[0], s('-moz-calc(%s)', unquote(arguments)))
+//     add-property(current-property[0], s('-ms-calc(%s)', unquote(arguments)))
+//     add-property(current-property[0], s('-o-calc(%s)', unquote(arguments)))
+//     s('calc(%s)', unquote(arguments))
+//   else
+//     error('calc() must be used within a property')

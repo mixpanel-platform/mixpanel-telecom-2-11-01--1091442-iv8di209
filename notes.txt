@@ -1,0 +1,7 @@
+1. No Results Screen/View
+2. Get Started Screen/View
+3. Mixpanel Tracking
+--> 1. Run Report w/ Properties such as whether event filter / global filter used, etc. (PARAMS AS PROPERTIES)
+--> 2. Node is clicked w/ Properties such as drop off rate, step of the event, (other or rank of node)
+--> 3. Show all paths
+4. Compile to HTML/CSS/JS

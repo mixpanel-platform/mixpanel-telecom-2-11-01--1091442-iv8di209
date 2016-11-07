@@ -1,0 +1,31 @@
+div.container-report.clearfix
+  div#options.container-section
+    div.container-options-start-event
+      div#start-event-select.mp-select.mp-event-select
+    div.container-options-global-filter.inactive
+      //- very ugly
+      div.container-controls-global-filter 
+        div.mp-select.mp-super-property-select
+      div.global-filter-help
+        div.global-filter-help-tooltip Each event must include the selected property/value pair to count as a conversion
+    div.global-filter-button.inactive
+      div.globe-icon
+      div.global-filter-text APPLY GLOBAL FILTER TO PATHS
+    //- This below is terrible, I'm not a proud father
+    div.global-filter-covers
+      div.global-filter-cover-1
+      div.global-filter-cover-2
+  div#common-user-flows.container-section
+    div#flows-chart.container-chart
+      div.container-chart-header
+        div#flows-chart-header.clearfix
+          div#date-picker.pull-left
+        button#show-all-paths-button SHOW ALL PATHS
+        div.chart-title-shadow
+      div.flows-chart-area
+        div.banner
+          div.banner-icon.banner-icon-get-started
+          div.banner-title FLOWS
+          div.banner-message Please choose a start event to retrieve results.
+        div#flows-chart-diagram-container
+          div#flows-chart-diagram

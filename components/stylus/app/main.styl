@@ -1,0 +1,1387 @@
+@import '../_variables'
+@import '../_mixins'
+
+html
+  box-sizing: border-box
+
+*, *:before, *:after
+  box-sizing: inherit
+
+.clearfix:before
+.clearfix:after
+  content: " "
+  display: table
+
+.clearfix:after
+  clear: both
+
+.center-contents
+  text-align: center
+  white-space: nowrap
+
+.center-contents:before
+.center-contents-vertical:before
+  content: ''
+  display: inline-block
+  vertical-align: middle
+  height: 100%
+  margin-right: -0.25em
+.center-vertical
+  display: inline-block
+  vertical-align: middle
+
+.hidden
+  display: none !important
+
+.loading
+  position: relative
+  & *
+    transition: none !important
+
+*
+  box-sizing: border-box
+
+.dashboard-body
+  padding: $bodyPadding
+  font-size: 16px
+  line-height: 1.0
+
+h1, h2, h3, h4, h5, h6
+  color: $textPrimaryColor
+  margin: 0
+  openSansBold()
+
+hr
+  divider()
+
+button
+  border: 0
+  outline: none
+  margin: 0
+  padding: 0
+
+ul
+  margin: 0
+  padding: 0
+  list-style-type: none
+
+/* Classes */
+.pull-left
+  float left
+
+.pull-right
+  float: right
+
+.column
+  width: $columnWidth
+  padding: 0 $containerPadding 0 $containerPadding
+
+.column.pull-left
+  padding-right: $containerInnerPadding
+  
+.column.pull-right
+  padding-left: $containerInnerPadding
+
+.column .container-section
+  margin: 0 0 $containerMargin 0
+
+#container-logo-title
+  position: relative
+  text-align: center
+  height: $containerLogoTitleHeight
+
+.container-report
+  width: $containerReportWidth
+  max-width: $containerReportMaxWidth
+  min-width: $containerReportMinWidth
+  margin: auto
+  background-color: $containerReportBackgroundColor
+
+.container-section
+  background-color: $containerSectionBackgroundColor
+  padding: $containerPadding
+  margin: $containerMargin
+  borderRadiusLarge()
+
+.container-chart
+  background-color: $containerChartBackgroundColor
+  padding: $containerChartPaddingTop $containerChartPaddingDefault $containerChartPaddingDefault
+  borderRadiusSmall()
+
+.container-chart-header
+  background-color: inherit
+  position: relative
+  // $$RG$$ TODO: figure out if this is really needed
+  // z-index: 20
+
+.container-chart-title
+  background-color: inherit
+  position: relative
+  text-align: center
+  padding: $containerChartTitlePaddingTB 0
+  z-index: 4
+
+.container-chart-contents
+  position: relative
+  vertical-align: top
+  display: inline-block
+  background-color: white
+  width: 100%
+  z-index: 1
+  borderBottomRadiusSmall()
+
+.container-meter
+  display: inline-block
+
+.container-pie-chart
+.container-bar-chart
+.container-line-chart
+  background-color: $containerChartContentBackgroundColor
+  borderBottomRadiusSmall()
+
+.container-pie-chart
+  padding: $containerPieChartPadding
+
+.container-pie-chart-legend
+  margin-left: $containerPieChartLegendMarginLeft
+  vertical-align: middle
+  display: inline-block
+
+.container-bar-chart
+.container-line-chart
+  // prevent vertical margin collapsing
+  overflow: hidden
+  position: relative
+  height: $containerChartContentHeight
+
+.container-x-axis
+.container-y-axis
+  background-color: $axisColor
+  position: absolute
+  left: 0
+  borderBottomRadiusSmall()
+
+.container-y-axis
+  text-align: center
+  width: $axisSize
+  height: 100%
+  top: 0
+
+.container-x-axis
+  height: $axisSize
+  width: 100%
+  bottom: 0
+
+.container-line-chart-points
+  position: absolute
+  left: $containerLineChartPointsPositionLeft
+  bottom: $containerLineChartPointsPositionBottom
+
+.container-bar
+  width: $containerBarWidth
+  display: inline-block
+  text-align: center
+
+.container-options-start-event
+.container-options-global-filter
+.global-filter-button
+  background: $mpGrey
+
+.container-options-start-event
+.container-options-global-filter
+  position: relative
+  border-left: $borderWidth solid $pickerBorderColor
+  border-right: $borderWidth solid $pickerBorderColor
+  border-top: $borderWidth solid $pickerBorderColor
+
+.container-options-start-event
+  padding: 19px 19px 20px 19px// TODO: variable
+  borderTopRadiusSmall()
+
+.filter-controls-group
+  display: inline-block
+
+.container-controls-global-filter
+  position: absolute
+  top: 19px
+  left: 19px
+
+.container-options-global-filter
+  height: 80px
+  transition: height 0.3s
+
+.container-options-global-filter.inactive
+  height: 0
+
+.globe-icon
+  width: 16px // TODO: variable
+  background-size: 16px 16px // TODO: variable
+  background-image: url('../../images/icon-globe-normal@2x')
+  background-repeat: no-repeat
+  background-position: center
+  margin-right: 5px
+
+.globe-icon
+.global-filter-text
+  display: inline-block
+  vertical-align: top
+  height: 38px
+
+.global-filter-help
+  background-image: url('../../images/icon-global-filter-help@2x')
+  background-size: 16px 16px // TODO: variable
+  position: absolute
+  top: 19px // account for borders, TODO: variable
+  right: 19px // TODO: variable
+  width: 16px // TODO: variable
+  height: 16px // TODO: variable
+  &:hover .global-filter-help-tooltip
+    display: block
+
+.global-filter-help-tooltip
+  display: none
+  background: $mpDropdownBackgroundColor
+  color: $mpDropdownItemTextColor
+  position: absolute
+  top: -14px
+  right: 28px
+  width: 180px
+  font-size: 0.625rem
+  line-height: 0.875rem
+  padding: 15px 10px
+  openSansSemibold()
+  borderRadius($mpDropdownBorderRadius)
+  shadowLarge()
+  &::after
+    // triangle
+    content: ''
+    position: absolute
+    top: 12px
+    right: -8px
+    width: 0
+    height: 0
+    border: 10px solid black
+    border-color: transparent transparent white white
+    box-shadow: -1px 1px 2px 0 rgba(0, 0, 0, 0.05)
+    turn(225deg)
+    borderRadiusSmall()
+
+.global-filter-covers
+  position: absolute
+  bottom: -20px // TODO: variable
+  left: 0
+  z-index: 1
+  width: 100%
+
+.global-filter-cover-1
+  height: 20px
+  background: $containerSectionBackgroundColor
+  borderBottomRadiusSmall()
+
+.global-filter-cover-2
+  height: 20px
+  background: $containerReportBackgroundColor
+
+.global-filter-button
+  height: 40px // account for borders, TODO: variable
+  border: $borderWidth solid $pickerBorderColor
+  color: $mpDarkBlue // TODO: proper variable
+  cursor: pointer
+  font-size: 0.625rem // TODO: variable
+  line-height: 38px // TODO: variable
+  text-align: center // TODO: this might change
+  position: relative
+  borderBottomRadiusSmall()
+  openSansBold()
+  &:hover:not(.button-click)
+    background: #E9F2FA // TODO: variable
+    color: #61ADF0 // TODO: variable
+    .globe-icon
+      background-image: url('../../images/icon-globe-active@2x')
+
+.global-filter-button.inactive
+  margin-top: -1px // Hide the top border
+
+.button
+  display: inline-block
+  padding: $buttonPaddingTB $buttonPaddingLR
+  font-size: $buttonTextSize
+  line-height: $buttonLineHeight
+  openSansBold()
+  borderRadiusLarge()
+  shadowSmall()
+
+.button.action
+  background-color: $buttonActionColor
+  color: $textButtonActionColor
+  &:active
+    background-color: $buttonActionActiveColor
+
+.button.enabled
+  background-color: $buttonEnabledColor
+  color: $textButtonEnabledColor
+
+.button.disabled
+  background-color: $buttonDisabledColor
+  color: $textButtonDisabledColor
+
+.button-content
+  display: inline-block
+
+.button-text
+  font-size: $buttonTextSize
+
+.disclosure-indicator
+  vertical-align: middle
+  width: $disclosureIndicatorWidth
+  height: $disclosureIndicatorHeight
+
+.meter-heading
+  font-size: $meterHeadingTextSize
+  margin-bottom: $containerMargin
+
+.meter-background
+  position: relative
+  background-color: $meterColor
+  width: $meterSize
+  height: $meterSize
+  circle()
+  shadowSmall()
+
+.meter-value-circle
+  position: relative
+  display: inline-block
+  width: $meterValueCircleSize
+  height: $meterValueCircleSize
+  margin: $meterValueCircleMargin
+  background-color: $meterValueCircleColor
+  z-index: 2
+  circle()
+
+.meter-value
+  font-size: $meterValueTextSize
+
+.meter-svg
+  position: absolute
+  top: 0
+  left: 0
+  background: $pieChartFill
+  z-index: 1
+  turn(-90deg)
+  circle()
+
+.meter-progress
+  stroke-width: 32
+  stroke-dasharray: 0 100
+  fill: $pieChartFill
+
+.chart-title
+  color: $textChartTitleColor
+  font-size: $chartTitleTextSize
+  openSansExtraBold()
+
+.chart-title-shadow
+  background-color: transparent
+  position: absolute
+  left: 0
+  bottom: 0
+  width: $chartTitleShadowWidth
+  height: $chartTitleShadowHeight
+  z-index: 3 /* Place the shadow below container-chart-title div */
+  shadowSmall()
+
+.chart-vertical-divider
+  background-color: $chartVerticalDividerColor
+  position: absolute
+  top: $chartVerticalDividerPositionTop
+  left: $chartVerticalDividerPositionLeft
+  width: $chartVerticalDividerWidth
+  height: $chartVerticalDividerHeight
+  z-index: 1
+
+.mp-dropdown
+  // $$RG$$ added begin
+  position: absolute
+  top: 40px + 14px // 40px + triangle
+  left: 50%
+  transform(translateX(-50%)) // Centers unknown width when absolutely positioned
+  // $$RG$$ added end
+  width: $mpDropdownWidth
+  padding: $mpDropdownPadding
+  background-color: $mpDropdownBackgroundColor
+  borderRadius($mpDropdownBorderRadius)
+  shadowLarge()
+  &::after
+    // triangle
+    content: ''
+    position: absolute
+    top: -10px
+    left: calc(50% - 10px)
+    width: 0
+    height: 0
+    border: 10px solid black
+    border-color: transparent transparent white white
+    box-shadow: -1px 1px 2px 0 rgba(0, 0, 0, 0.05) 
+    turn(135deg)
+    borderRadiusSmall()
+
+.mp-dropdown-item
+  margin: $mpDropdownItemMargin
+  color: $mpDropdownItemTextColor
+  cursor: pointer
+  font-size: $mpDropdownItemTextSize
+  line-height: $mpDropdownItemLineHeight
+  openSansBold()
+  textEllipsis()
+  &:hover
+    color: $mpDropdownItemHighlightTextColor
+
+.mp-iv-table li:nth-of-type(odd)
+  background-color: $tableRowOddColor
+
+.mp-iv-table li:nth-of-type(even)
+  background-color: $tableRowEvenColor
+
+.mp-iv-table li:last-of-type
+  borderBottomRadiusSmall()
+
+.mp-iv-table-row
+  padding: $tableRowPaddingTB $tableRowPaddingLR
+
+.mp-iv-table-row h2
+  font-size: $tableRowTextSize
+
+.mp-iv-table-header
+  padding: $tableHeaderPaddingTB $tableHeaderPaddingLR
+  background-color: $tableHeaderColor
+
+.mp-iv-table-header-title
+  font-size: $tableHeaderTextSize
+
+.mp-bar-chart, .mp-line-chart, .mp-pie-chart
+  height: $chartHeight
+  background-color: $axisColor
+  borderBottomRadiusSmall()
+
+.mp-line-chart
+  height: $lineChartHeight
+
+// Workaround for line charts to set chart height
+.mp-line-chart .graph
+  height: $lineChartHeight
+
+// Remove inner line chart border
+.mp-line-chart svg > path
+  display: none
+
+// Remove outer line chart border
+.mp-line-chart svg > rect:nth-of-type(2)
+  stroke: $axisColor
+
+// Set border radius for line chart y-axis to 0
+.mp-line-chart svg > rect:nth-of-type(3)
+  rx: 0
+  ry: 0
+  
+// Adapted from container-pie-chart
+.mp-pie-chart
+  background-color: $containerChartContentBackgroundColor
+  borderBottomRadiusSmall()
+
+.mp-number-picker.mine
+.mp-unit-picker
+.mp-combined-picker
+  display: inline-block
+  height: $pickerHeight
+  background-color: $pickerBackgroundColor
+  border: $borderWidth solid $pickerBorderColor
+  color: $textPrimaryColor
+  font-size: $pickerTextSize
+  text-align: center
+  margin: $pickerMarginTB $pickerMarginLR
+  borderRadiusLarge()
+  openSansBold()
+
+.mp-number-picker
+.mp-unit-picker
+  line-height: $pickerLineHeight
+
+// $$RG$$ TODO: these won't last long
+.mp-number-picker
+  width: $numberPickerWidth
+
+.mp-unit-picker
+  width: $unitPickerWidth
+
+.mp-combined-picker
+  position: relative
+  &::after
+    content: ''
+    width: $combinedPickerDividerWidth
+    height: $combinedPickerDividerHeight
+    position: absolute
+    top: $combinedPickerDividerTop
+    left: $combinedPickerDividerLeft
+    background-color: $pickerBorderColor
+  .mp-number-picker
+  .mp-unit-picker
+    height: auto
+    border: 0
+    margin: 0
+    line-height: $combinedPickerLineHeight
+
+// Flows chart styles
+.flows-chart-area
+  position: relative
+  // $$RG$$ modified begin
+  padding: 20px // $flowsChartAreaPaddingTB $flowsChartAreaPaddingLR
+  // $$RG$$ modified end
+  background-color: $flowsChartAreaBackgroundColor
+  borderBottomRadiusSmall()
+
+.banner
+  position: absolute
+  top: 50%
+  left: 50%
+  margin-top: (-62px/2)
+  margin-left: (-410px/2)
+  padding: 12px 10px
+  background: #F8F9FC
+  border: 1px solid #D4E0E8
+  width: 410px
+  height: 62px
+  borderRadius(5px)
+  shadowSmall()
+
+.banner-title
+.banner-message
+  color: $mpDarkBlue
+  font-size: 14px
+  font-size: (14rem/16)
+  line-height: (19/14)
+
+.banner-title
+  openSansBold()
+
+.banner-message
+  openSansRegular()
+
+.banner-icon
+  margin-right: 10px
+  float: left
+
+.banner-icon-no-results
+  background-image: url('../../images/icon-caution')
+  background-size: 41px 37px
+  width: 41px
+  height: 37px
+
+.banner-icon-get-started
+  background-image: url('../../images/icon-product')
+  background-size: 40px 34px
+  width: 40px
+  height: 34px
+ 
+.flows-chart-legend-item
+  display: inline-block
+  width: $flowsChartLegendItemWidth
+  height: $flowsChartLegendItemHeight
+
+.flows-chart-legend-text
+  font-size: $flowsChartLegendTextSize
+  openSansBold()
+
+// Flows point
+for i in 0..5
+  .flows-chart-path-stroke-{i}
+    z-index: 8 - i
+    path
+      stroke: $paletteColors[i]
+
+.flows-chart-path
+  position: absolute
+  display: inline-block
+  path
+    fill: none
+    fill-rule: evenodd
+    stroke-linecap: square
+    stroke-linejoin: round
+    stroke-width: 5
+
+// TODO: see if this is really needed
+svg:not(:root)
+  overflow-x: scroll
+
+.flows-chart-point
+  cursor: pointer
+  position: absolute
+  width: $flowsChartPointSize
+  height: $flowsChartPointSize
+  z-index: 10
+  .flows-chart-point-tooltip
+    display: none
+  // TODO: get active state working where we can click and tooltip does not disappear
+  // &:active
+  //   .flows-chart-point-tooltip
+  //     display: inline-block
+  &:hover
+    z-index: 15
+    .flows-chart-point-tooltip
+      display: inline-block // TODO: this will be javascript
+  &.flows-chart-max-point
+    .flows-chart-point-tooltip
+      left: -190px // TODO: variable
+      &::after
+        left: 168px // TODO: variable
+        turn(225deg)
+
+  &.flows-chart-end-point
+    .flows-chart-point-drop-off-percentage
+      fill: $flowsChartPointDropOffBackgroundColor
+      stroke: $flowsChartPointDropOffBackgroundColor      
+    .flows-chart-point-tooltip
+      hr:nth-of-type(2)
+        display: none
+      .flows-chart-point-tooltip-event-exit-count
+        display: none
+
+.flows-chart-point-contents
+  position: relative
+  display: inline-block
+  width: $flowsChartPointSize
+  height: $flowsChartPointSize
+  z-index: 10 // high z-index to guarantee it sits above paths
+  circle()
+  openSansExtraBold()
+  shadowSmall()
+// For animation
+.flows-chart-point-effect::before
+.flows-chart-point-effect::after
+  content: ''
+  position: absolute
+  z-index: 2
+  top: 50%
+  left: 50%
+  margin-top: -($flowsChartPointEffectSize / 2)
+  margin-left: -($flowsChartPointEffectSize / 2)
+  // $$RG$$ TODO: figure out why this isn't working
+  // margin: -($flowsChartPointEffectSize/2) 0 0 -($flowsChartPointEffectSize/2)
+  width: $flowsChartPointEffectSize
+  height: $flowsChartPointEffectSize
+  opacity: 0
+  pointer-events: none
+  circle()
+
+.flows-chart-point-effect::before
+  // box-shadow: 0 0 0 5px rgba(247, 240, 252, 0.5) <- light grey
+  box-shadow: 0 0 0 5px rgba(140, 152, 158, 0.5) // TODO: variables
+
+.flows-chart-point-effect.button-click::before
+  animation-name: flows-chart-point-effect-1
+  animation-duration: $flowsChartPointEffectDuration
+  animation-iteration-count 1
+  animation-timing-function: ease-out
+  animation-fill-mode: forwards
+
+.highlight .flows-chart-point-effect.button-click::before
+  box-shadow: 0 0 0 5px rgba(62, 80, 106, 0.5)
+
+.highlight.focus .flows-chart-point-effect.button-click::before
+  animation-name: flows-chart-point-effect-0
+
+.flows-chart-point-count
+  position: absolute
+  top:  $flowsChartPointBorderSize
+  left: $flowsChartPointBorderSize
+  width: $flowsChartPointInnerSize
+  height: $flowsChartPointInnerSize
+  background-color: $flowsChartPointBackgroundColor
+  color: $flowsChartPointTextColor
+  font-size: $flowsChartPointCountTextSize
+  line-height: $flowsChartPointInnerSize
+  text-align: center
+  z-index: 4
+  circle()
+  textShadowSmall()
+
+.flows-chart-point-drop-off
+  position: absolute
+  top: 0
+  left: 0
+  width: $flowsChartPointSize
+  height: $flowsChartPointSize
+  z-index: 3
+  circle()
+  
+  .flows-chart-point-drop-off-percentage
+    fill: $flowsChartPointDropOffBackgroundColor
+    stroke: $flowsChartDropOffColor
+    stroke-width: 32
+    stroke-dasharray: 25 100 // This changes the percentage
+
+.flows-chart-point-name
+  position: absolute
+  bottom: $flowsChartPointNameBottom
+  left: $flowsChartPointNameLeft
+  height: $flowsChartPointNameHeight
+  padding: $flowsChartPointNamePadding
+  background-color: $flowsChartPointBackgroundColor
+  color: $flowsChartPointTextColor
+  font-size: $flowsChartPointNameTextSize
+  min-widh: $flowsChartPointNameMinWidth
+  max-width: $flowsChartPointNameMaxWidth
+  line-height: $flowsChartPointNameLineHeight
+  transform(translateX(-50%)) // Centers unknown width when absolutely positioned
+  borderRadiusLarge()
+  openSansExtraBold()
+  shadowSmall()
+  textEllipsis()
+  textShadowSmall()
+
+// Tooltip styles
+.flows-chart-point-tooltip
+  position: absolute
+  width: 180px // TODO: variable
+  top: 0 // TODO: variable
+  left: 60px // TODO: variable
+  background-color: $mpDropdownBackgroundColor // TODO: variable
+  borderRadiusLarge($mpDropdownBorderRadius)
+  shadowLarge()
+  &::after
+    // triangle
+    content: ''
+    position: absolute
+    top: 15px
+    left: -8px
+    width: 0
+    height: 0
+    border: 10px solid black
+    border-color: transparent transparent white white
+    box-shadow: -1px 1px 2px 0 rgba(0, 0, 0, 0.05) 
+    turn(45deg)
+    borderRadiusSmall()
+
+.flows-chart-point-tooltip-contents
+  position: relative
+  text-align: center
+  padding: $flowsChartPointTooltipContentsPadding
+
+.flows-chart-point-tooltip-event-name
+  padding: $flowsChartPointTooltipItemPadding
+  color: $flowsChartPointTextColor
+  font-size: $flowsChartPointTooltipItemSmallTextSize
+  line-height: $flowsChartPointTooltipItemSmallLineHeight
+  openSansBold()
+
+.flows-chart-point-tooltip-event-count
+  padding: $flowsChartPointTooltipItemPadding
+  color: $flowsChartSuccessTextColor
+  font-size: $flowsChartPointTooltipItemLargeTextSize
+  line-height: $flowsChartPointTooltipItemLargeLineHeight
+  openSansBold()
+
+.flows-chart-point-tooltip-event-exit-count
+  padding: $flowsChartPointTooltipItemPadding
+  color: $flowsChartDropOffTextColor
+  font-size: $flowsChartPointTooltipItemSmallTextSize
+  line-height: $flowsChartPointTooltipItemSmallLineHeight
+  openSansBold()
+
+// $$RG$$ TODO: this is hella nasty, get it together Ron
+  // Highlight Mode
+.highlight-mode
+  .chart-title-shadow
+    display: none
+  .flows-chart-path
+    opacity: 0
+    transition: opacity 0.7s
+  .flows-chart-point
+    // $RG$$ commented begin
+    // z-index: 1
+    // $$RG$$ commented end
+    &:hover
+      .flows-chart-point-tooltip
+        display: none
+  .flows-chart-point-contents
+    box-shadow: none
+  .flows-chart-point-count
+    color: $mpBrandGrey
+    text-shadow: none
+  .flows-chart-end-point .flows-chart-point-drop-off-percentage
+  .flows-chart-point-drop-off-percentage
+    fill: $mpBrandLightGrey
+    stroke: $mpBrandGrey
+  .flows-chart-point-name
+    color: $mpBrandGrey
+    text-shadow: none
+    box-shadow: none
+  #show-all-paths-button
+    bottom: -($showAllPathsButtonHeight)
+    shadowSmall()
+    &:hover
+      color: $buttonActionColor
+      background-color: #E9F2FA
+  // $$RG$$ added begin
+  .highlight
+    &.flows-chart-point
+      z-index: 10
+      &:hover
+        z-index: 15
+        .flows-chart-point-tooltip
+          display: inline-block // TODO: do something with JS
+    .flows-chart-point-contents
+      shadowSmall()
+    .flows-chart-point-drop-off-percentage
+      transition: fill $flowsChartPointEffectDuration, stroke $flowsChartPointEffectDuration
+    .flows-chart-point-name
+      transition: color $flowsChartPointEffectDuration
+    .flows-chart-point-contents.button-click .flows-chart-point-drop-off-percentage
+      fill: #4A6080// TODO: variable
+      stroke: #FF6E6B // TODO: variable
+    &.flows-chart-end-point .flows-chart-point-contents.button-click .flows-chart-point-drop-off-percentage
+      stroke: #4A6080 // TODO: variable
+         
+    .flows-chart-point-count
+      background-color: $flowsChartPointBackgroundColor
+      color: $flowsChartPointTextColor
+      textShadowSmall()
+    .flows-chart-point-name
+      color: $flowsChartPointTextColor
+      background-color: $flowsChartPointBackgroundColor
+      shadowSmall()
+      textShadowSmall()
+    .flows-chart-point-drop-off-percentage
+      fill: $flowsChartPointDropOffBackgroundColor
+      stroke: $flowsChartDropOffColor
+    &.flows-chart-end-point .flows-chart-point-drop-off-percentage
+      fill: $flowsChartPointDropOffBackgroundColor
+      stroke: $flowsChartPointDropOffBackgroundColor
+    &.flows-chart-path
+      opacity: 1
+  // $$RG$$ added end
+
+// Date picker styles
+.mixpanel-platform-date_picker.mp-date-picker
+  height: $buttonHeight
+  .title
+    text-transform: uppercase
+    display: inline-block
+    color: $textButtonEnabledColor
+    background-color: $buttonEnabledColor
+    font-size: $buttonTextSize
+    line-height: $buttonLineHeight
+    padding: 0
+    margin: 0 $buttonRangePickerMarginRight 0 0
+    text-shadow: none
+    openSansBold()
+
+  .mixpanel-platform-button_primary.mixpanel-platform-button
+    background-image: none
+
+  .rounded_dropdown_label
+    width: $buttonWidth
+    display: inline-block
+    padding: $buttonPaddingTB $buttonPaddingLR
+    background-color: $buttonEnabledColor
+    borderRadiusLarge()
+    shadowSmall()
+    background-image: none
+    border: 0
+    &.active, &:hover
+      .arrow
+        background-position: 0 0
+    &.active
+      .arrow
+        flipVertically()
+
+  .arrow
+    display: inline-block
+    position: absolute
+    top: $disclosureIndicatorTop
+    right: $disclosureIndicatorRight
+    width: $disclosureIndicatorWidth
+    height: $disclosureIndicatorHeight
+    border-radius: 0
+    background-size: $disclosureIndicatorWidth $disclosureIndicatorHeight
+    background-image: url('../../images/disclosure-indicator@2x')
+
+  .rounded_dropdown_body.dropdown_body_widget
+    left: 1px // TODO: variable, adjust for - 2px added to style tag
+    min-width: $buttonWidth
+
+  .dropdown_label_widget.label
+    font-size: $buttonTextSize
+    text-transform: uppercase
+    openSansBold()
+
+  .rounded_dropdown_item.dropdown_item_widget
+    font-size: $mpDropdownItemTextSize
+    line-height: $mpdDropdownItemLineHeight
+    text-transform: uppercase
+    openSansBold()
+
+  .mixpanel-platform-button
+    font-size: $buttonTextSize
+    openSansBold()
+
+// Select styles, styles for .mp-select are needed for consistency with MPSelect
+.mp-select
+.mp-select-text-input
+.mp-select-small
+  position: relative
+  display: inline-block
+  background: white
+  height: $buttonHeight
+  vertical-align: middle
+  margin-right: 10px
+  borderRadiusLarge()
+
+.mp-select
+.mp-select-text-input
+  width: $buttonWidth
+  
+.mp-select-small
+  width: 155px // TODO: variable
+
+.mp-select
+.mp-select-small
+  shadowSmall()
+
+.mp-select-text-input
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.20), inset 0px 1px 2px 0px rgba(0,0,0,0.20) // TODO: get this in a better format
+
+// TODO: remove these rules
+.mp-select.mine
+.mp-select-small
+.mp-select-text-input
+  border: 0
+  background-image: none
+  font-size: $buttonTextSize
+  color: $textPrimaryColor
+  padding: $buttonPaddingTB $buttonPaddingLR
+  line-height: $buttonLineHeight
+  openSansBold()
+  borderRadiusLarge()
+
+.mp-select
+  &.active
+    .disclosure-indicator
+      flipVertically()
+  .disclosure-indicator
+    position: absolute
+    background-image: url('../../images/disclosure-indicator@2x.png')
+    background-size: $disclosureIndicatorWidth $disclosureIndicatorHeight
+    top: 16px // TODO: variable
+    right: 15px // TODO: variable
+    width: $disclosureIndicatorWidth
+    height: $disclosureIndicatorHeight
+  .mp-dropdown
+    display: none
+  &:hover
+    .mp-dropdown
+      display: inline-block
+
+.mp-indicator
+  background: white
+  background-repeat: no-repeat
+  cursor: pointer
+  display: inline-block
+  width: 28px
+  height: 28px
+  vertical-align: middle
+  circle()
+  shadowSmall()
+
+.mp-indicator.expand
+  background-image: url('../../images/indicator-expand@2x')
+  background-size: 6px 10px
+  background-position: 11px 9px
+
+.mp-indicator.contract
+  background-image: url('../../images/indicator-contract@2x')
+  background-size: 7px 10px // TODO: variable
+  background-position: 9.5px 9px
+
+.mp-number-picker.mixpanel-platform-select.event_selector_theme
+  display: inline-block
+  height: $pickerHeight
+  width: $numberPickerWidth
+  margin: $pickerMarginTB $pickerMarginLR
+  cursor: pointer
+  min-width: $numberPickerWidth
+
+  .select_button
+    width: $numberPickerWidth
+    height: $pickerHeight
+    padding: 0
+    border: $borderWidth solid $pickerBorderColor
+    background-color: $pickerBackgroundColor
+    background-image: none
+    color: $textPrimaryColor
+    cursor: pointer
+    font-size: $pickerTextSize
+    min-width: $numberPickerWidth
+    text-align: center
+    borderRadiusLarge()
+    openSansBold()
+
+    .down_arrow_small
+    .down_arrow_big
+      display: none
+  .select_menu
+    width: $numberPickerWidth
+    min-width: $numberPickerWidth
+    outline: none
+    border: 1px solid $pickerBorderColor
+    borderBottomRadiusSmall()
+    shadowLarge()
+    .options_list
+      width: $numberPickerWidth
+      .select_option
+        padding: 0
+        text-align: center
+        min-width: $numberPickerWidth
+        font-size: $pickerTextSize
+        line-height: 1.000rem // TODO: variable
+        openSansBold()
+
+.mp-event-select
+  margin-right: 10px
+
+.mp-event-select
+.mp-property-value-select
+.mp-super-property-select
+  .options_list
+    div:first-of-type
+      display: none
+  
+.mp-select.mixpanel-platform-select.event_selector_theme
+  display: inline-block
+  width: $buttonWidth
+
+  .select_button
+    border: 0
+    background-color: white // TODO: variable
+    background-image: none
+    width: $buttonWidth
+    height: $buttonHeight
+    line-height: $buttonLineHeight
+    padding: $buttonPaddingTB $buttonPaddingLR
+    borderRadiusLarge()
+    // $$RG$$ commented begin
+    // shadowSmall()
+    // $$RG$$ commented end
+    &.active
+      .down_arrow_big
+        flipVertically()
+    span
+      display inline-block
+      width 155px
+      textEllipsis()
+
+  .select_menu
+    width: $buttonWidth
+    min-width: $buttonWidth
+
+    .search_box_container
+      .search_box
+        padding: 7px 6px // TODO: variable
+        background-image: none
+        openSans()
+    
+    .options_list
+      .select_option
+        font-size: $mpDropdownItemTextSize
+        line-height: $mpDropdownItemLineHeight
+        openSansBold()
+
+  .down_arrow_big
+    background-image: url('../../images/disclosure-indicator@2x')
+    background-size: $disclosureIndicatorWidth $disclosureIndicatorHeight
+    top: 16px // TODO: variable
+    right: 15px // TODO: variable
+    width: $disclosureIndicatorWidth
+    height: $disclosureIndicatorHeight
+
+  span
+    font-size: $buttonTextSize
+    openSansBold()
+
+.mp-property-select.mp-select.mixpanel-platform-select.event_selector_theme
+  .select_menu
+    .options_list
+      .select_option
+        text-transform: uppercase
+  span
+    text-transform: uppercase
+
+/* IDs */
+#title
+  position: relative
+
+#options
+  position: relative
+  height: $sectionOptionsHeight
+
+#selects
+  position: relative
+  padding: 20px
+  border: 1px solid $mpMidBlue
+  background-color: $mpGrey
+  borderRadiusSmall()
+  
+#selects .mp-select-container
+  display: inline-block
+
+#date-picker
+  display: inline-block
+
+#conversion-instructions
+#conversion-instructions-start-event-only
+  p
+    display: inline-block
+    margin: 0
+    color: $textPrimaryColor
+    font-size: $buttonTextSize
+    openSansBold()
+
+#conversion-instructions
+  margin-top: $conversionInstructionsMarginTop
+
+#conversion-instructions-start-event-only
+  display: inline-block
+  margin-left: $conversionInstructionsStartEventOnlyMarginLeft
+
+#show-common-user-flows-button
+  position: absolute
+  right: $containerMargin
+  bottom: $containerMargin
+  width: $showCommonUserFlowsButtonWidth
+
+#column-1
+  width: 50%
+
+#column-2
+  width: 50%
+
+#flows-chart-diagram-container
+  height: $flowsChartDiagramContainerHeight
+
+#flows-chart-diagram
+  position: relative
+  // margin-top: $flowsChartDiagramMarginTop // $$RG$$ commented
+  width: 4 * 160px + 5 * 44px // TODO: set width based on number of points + dividers
+  & > div.flows-chart-row:last-of-type // class included for clarity
+    margin-bottom: 0
+
+// TODO: dynamically generated
+// $$RG$$ added begin
+// col 0 (start) points
+#flows-chart-point-0-0
+  top: 225px
+  left: 15px
+#flows-chart-path-0-0-to-1-0
+  top: 47px
+  left: 35px
+#flows-chart-path-0-0-to-1-1
+  top: 127px
+  left: 40px
+#flows-chart-path-0-0-to-1-2
+  top: 207px
+  left: 57px
+#flows-chart-path-0-0-to-1-3
+  top: 250px
+  left: 57px
+#flows-chart-path-0-0-to-1-4
+  top: 267px
+  left: 40px
+#flows-chart-path-0-0-to-1-5
+  top: 267px
+  left: 35px
+// $$RG$$ added end
+
+#flows-chart-header
+  position: relative
+  padding: $flowsChartHeaderPadding
+  background-color: $flowsChartHeaderBackgroundColor
+  border-bottom: $borderWidth solid $containerChartBackgroundColor // Only need bottom border thanks to padding
+  z-index: 11 // needs higher z-index than chart + contents
+  min-height: 60px // TODO: variable
+  borderTopRadiusSmall()
+
+#filter-options-select
+#property-values-select
+  margin-left: $flowsChartHeaderSelectMarginLeft
+
+#filter-options-select
+#filter-options-select.mp-select.mixpanel-platform-select.event_selector_theme .select_button
+  width: 155px
+
+// $$RG$$ TODO: remove this
+#property-filter-close-button
+  width: $propertyFilterCloseButtonSize
+  height: $propertyFilterCloseButtonSize
+  position: absolute
+  top: $propertyFilterCloseButtonTop
+  right: $propertyFilterCloseButtonRight
+  background-color: transparent
+  background-image: url('../../images/close-button@2x')
+  background-size: $propertyFilterCloseButtonSize $propertyFilterCloseButtonSize
+
+#show-all-paths-button
+  position: absolute
+  left: 0
+  bottom: 0
+  width: 100%
+  background-color: $flowsChartHeaderBackgroundColor
+  color: $textPrimaryColor
+  font-size: $buttonTextSize
+  height: $showAllPathsButtonHeight
+  line-height: $showAllPathsButtonHeight
+  z-index 10
+  transition(bottom 0.3s cubic-bezier(1, -0.43, 0.16, 0.92))
+  openSansBold()
+  &:hover
+    background-color: $mpGrey
+
+#flows-chart-legend
+  display: inline-block
+  position: relative
+  h6
+    position: absolute
+    bottom: $flowsChartLegendTextBottom - ($flowsChartLegendTextSize * 16px) // TODO: rems, ems aren't recognized properly w/ units
+    &:nth-of-type(1) // most common
+      left: $flowsChartLegendTextLR
+    &:nth-of-type(2) // least common
+      right: $flowsChartLegendTextLR
+  for i in 0..7
+    div:nth-of-type({i+1}) // each .flows-chart-legend-item
+      background-color: $paletteColors[i]
+
+// #top-common-user-flows-button
+//   position: absolute
+//   top: 0 // TODO: variable
+//   right: 20px // TODO: variable
+//   width: 160px // TODO: variable
+//   height: 100% // TODO: variable
+//   background-color: $buttonCommonUserFlowsColor
+//   border-left: $borderWidth solid $containerChartBackgroundColor
+//   border-right: $borderWidth solid $containerChartBackgroundColor
+//   font-size: $buttonTextSize
+//   color: $textPrimaryColor
+//   openSansBold()
+//   &:active, &:hover
+//     background-color: $buttonCommonUserFlowsActiveColor
+
+#avg-impressions
+  margin: 0 $containerMargin $containerMargin
+
+#button-range-picker
+  background-color: $buttonEnabledColor
+
+// $$RG$$ TODO: move changing stuff in specific file
+#end-event-select
+  margin-left: $containerMargin
+
+#dau
+  position: absolute
+  top: $containerPadding
+  left: $containerPadding
+
+#dau-progress
+  stroke: $companyColor
+
+#dau-meter-value
+  color: $companyColor
+
+#avg-rating-progress
+  stroke: $companyColor
+
+#avg-rating-meter-value
+  color: $companyColor
+
+#daily-shares
+  position: absolute
+  top: $containerPadding
+  right: $containerPadding
+
+// $$RG$$ commented begin: not needed here
+// #daily-shares .meter-background
+//   position: absolute
+//   right: 0
+// $$RG$$ commented end
+
+#daily-shares-meter-value
+  color: $companyColor
+
+#daily-shares-progress
+  stroke: $companyColor
+// $$$RG$$ TODO end
+
+#company-logo
+  height: $companyLogoHeight
+  vertical-align: middle
+  display: inline-block
+
+#report-title
+  font-size: $reportTitleTextSize
+  openSansExtraBold()
+
+#range-picker-button-text
+  margin-right: $buttonRangePickerMargin
+
+#meters
+  position: relative
+  text-align: center
+
+#loading-symbol
+  position: absolute
+  top: $loadingSymbolTop
+  left: $loadingSymbolLeft
+  margin-top: $loadingSymbolMarginTop
+  margin-left: $loadingSymbolMarginLeft
+  width: $loadingSymbolWidth
+  height: $loadingSymbolHeight
+  z-index: 20 // High z-index (higher than flows)
+
+#loading-mp-circle-1
+  opacity: 0
+  transformOrigin(7.58823529px, 7.58823529px)
+  animation(pulse, ease-in-out, both, 1.2s, 0s, infinite)
+
+#loading-mp-circle-2
+  opacity: 0
+  transformOrigin(34.9764706px, 7.65882353px)
+  animation(pulse, ease-in-out, both, 1.2s, 0.3s, infinite)
+
+#loading-mp-circle-3
+  opacity: 0
+  transformOrigin(57.5647059px, 7.65882353px)
+  animation(pulse, ease-in-out, both, 1.2s, 0.6s, infinite)
+
+/* Key Frames */
+@keyframes pulse
+  10%
+    scaleEl(1.2)
+    opacity: 1
+  90%
+    scaleEl(0.8)
+    opacity: 0
+
+@keyframes flows-chart-point-effect-0
+  0%
+    opacity: 0
+    transform(scale3d(0.6, 0.6, 1))
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+
+@keyframes flows-chart-point-effect-1
+  0%
+    opacity: 0
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+    transform(scale3d(0.6, 0.6, 1))
